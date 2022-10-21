@@ -23,13 +23,11 @@ def corona_data_last_week():
     else:
         trend = "PLATEAU"
 
-
     for day_data in data_last_week:
         if day_data["Active"] > 10000:
             lockdown = True
         elif day_data["Active"] < 10000:
             lockdown = False
-
 
     data_final = {
         "cases": data_today["Confirmed"],
@@ -37,6 +35,7 @@ def corona_data_last_week():
         "trend": trend,
         "lockdown": lockdown
     }
+
     data_final_json = json.dumps(data_final)
 
     return data_final_json
