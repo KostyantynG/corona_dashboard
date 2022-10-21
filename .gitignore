@@ -2,3 +2,4 @@ venv*
 __pycache*
 corona-data.json
 .terra*
+terra*
