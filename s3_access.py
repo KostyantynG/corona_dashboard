@@ -4,7 +4,6 @@ import boto3
 s3_client = boto3.client('s3')
 
 data_to_upload = corona_data_last_week()
-print(data_to_upload)
 
 with open("corona-data.json", "w") as file:
         file.write(data_to_upload)
