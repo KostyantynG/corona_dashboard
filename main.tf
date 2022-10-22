@@ -5,6 +5,11 @@ terraform {
       version = "~> 4.0"
     }
   }
+  backend "s3" {
+    bucket = "terra-state-bucket-friday112"
+    key    = "terraform.tfstate"
+    region = "us-west-2"
+  }
 }
 
 # Configure the AWS Provider
@@ -99,4 +104,9 @@ resource "aws_instance" "first_instance" {
   tags = {
     Name = "Corona IAM instance"
   }
+}
+
+resource "aws_s3_bucket" "terraform_state" {
+  bucket = "terra-state-bucket-friday112"
+  force_destroy = true
 }
