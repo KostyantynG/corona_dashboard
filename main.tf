@@ -97,6 +97,6 @@ resource "aws_instance" "first_instance" {
   user_data                   = file("script.sh")
 
   tags = {
-    Name = "Amazon_Linux_2_t3_micro"
+    Name = "Corona IAM instance"
   }
 }
