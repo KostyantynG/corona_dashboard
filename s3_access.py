@@ -8,4 +8,4 @@ data_to_upload = corona_data_last_week()
 with open("corona-data.json", "w") as file:
         file.write(data_to_upload)
 
-s3_client.upload_file('corona-data.json', 'corona-friday-challenge-bucket', 'corona-data.json')
+s3_client.upload_file('corona-data.json', 'corona-friday-challenge-bucket1', 'corona-data.json')
