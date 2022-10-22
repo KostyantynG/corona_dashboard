@@ -97,8 +97,3 @@ resource "aws_instance" "first_instance" {
     Name = "Corona IAM instance"
   }
 }
-
-resource "aws_s3_bucket" "terraform_state" {
-  bucket = "terra-state-bucket-friday112"
-  force_destroy = true
-}
