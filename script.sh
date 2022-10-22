@@ -8,7 +8,7 @@ wget https://raw.githubusercontent.com/KostyantynG/corona_dashboard/dev/corona.p
 wget https://raw.githubusercontent.com/KostyantynG/corona_dashboard/dev/s3_access.py
 
 crontab<<EOF
-*/10 * * * * cd /home/ec2-user/ && python3 s3_access.py
+* * * * * cd /home/ec2-user/ && python3 s3_access.py
 EOF
 
 
