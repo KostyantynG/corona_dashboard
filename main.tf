@@ -58,7 +58,7 @@ resource "aws_route_table_association" "public_subnet_association" {
   route_table_id = aws_route_table.public_route_table.id
 }
 
-resource "aws_security_group" "ssh_security" {
+resource "aws_security_group" "ssh_http_security" {
   name   = "allow_ssh"
   vpc_id = aws_vpc.myvpc.id
 
@@ -66,6 +66,14 @@ resource "aws_security_group" "ssh_security" {
     description = "SSH"
     from_port   = 22
     to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description = "HTTP"
+    from_port   = 80
+    to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -79,7 +87,7 @@ resource "aws_security_group" "ssh_security" {
   }
 
   tags = {
-    Name = "Allow SSH"
+    Name = "Allow SSH and HTTP"
   }
 }
 
@@ -89,7 +97,7 @@ resource "aws_instance" "first_instance" {
   associate_public_ip_address = true
   iam_instance_profile        = "LabInstanceProfile"
   subnet_id                   = aws_subnet.public_subnet.id
-  vpc_security_group_ids      = [aws_security_group.ssh_security.id]
+  vpc_security_group_ids      = [aws_security_group.ssh_http_security.id]
   key_name                    = "vockey"
   user_data                   = file("script.sh")
 
