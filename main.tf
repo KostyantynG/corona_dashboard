@@ -105,22 +105,3 @@ resource "aws_instance" "first_instance" {
     Name = "Corona IAM instance"
   }
 }
-
-resource "aws_s3_bucket" "s3_bucket" {
-
-  bucket = "crazy-lazy-bucket1"
-
-  acl = "private"
-
-}
-
-resource "aws_s3_bucket_object_lock_configuration" "s3_bucket" {
-  bucket = aws_s3_bucket.s3_bucket.bucket
-
-  rule {
-    default_retention {
-      mode = "COMPLIANCE"
-      days = 5
-    }
-  }
-}
