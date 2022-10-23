@@ -108,7 +108,7 @@ resource "aws_instance" "first_instance" {
 
 resource "aws_s3_bucket" "s3_bucket" {
 
-  bucket = "crazy_lazy_bucket1"
+  bucket = "crazy-lazy-bucket1"
 
   acl = "private"
 
