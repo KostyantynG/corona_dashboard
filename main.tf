@@ -105,3 +105,11 @@ resource "aws_instance" "first_instance" {
     Name = "Corona IAM instance"
   }
 }
+
+resource "aws_s3_bucket" "s3_bucket" {
+
+  bucket = "crazy_lazy_bucket1"
+
+  acl = private
+
+}
